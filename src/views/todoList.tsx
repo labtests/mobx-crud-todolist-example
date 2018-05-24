@@ -18,9 +18,9 @@ export default class TodoList extends React.Component<Props, object> {
 
     return (
 <div>
-  {store.todoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
-  <hr />
   <button onClick={this.newTodoHandler}>New Todo</button>
+  <hr />
+  {store.todoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
 </div>
     )
   }

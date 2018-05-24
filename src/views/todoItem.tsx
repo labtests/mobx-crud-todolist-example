@@ -22,7 +22,7 @@ export default class TodoItem extends React.Component<Props, object> {
 
     return (
 <div>
-  {todo.title}
+  ⏰ {todo.remainingTime} {todo.completed ? '✅' : '❌'} {todo.title} 
 </div>
     );
   }
