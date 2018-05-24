@@ -17,7 +17,7 @@ export default class TodoModel {
 
   constructor() {
     this.id = `${Date.now()}`;
-    this.remainingTime = 5;
+    this.remainingTime = 20;
 
     const refreshID = setInterval(() => {
       this.remainingTime--;
