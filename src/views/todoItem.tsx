@@ -6,6 +6,7 @@ import { createViewModel, IViewModel } from 'mobx-utils';
 
 interface Props {
   todo: TodoModel;
+  requestRemoval: (model: TodoModel) => void;
 }
 
 @observer
@@ -30,6 +31,7 @@ export default class TodoItem extends React.Component<Props, object> {
 <div>
   ⏰ {todo.remainingTime} {todo.completed ? '✅' : '❌'} {todo.title} 
   <button onClick={this.editHandler}>Edit</button>
+  <button onClick={this.deleteHandler}>Delete</button>
 </div>
     );
   }
@@ -45,6 +47,12 @@ export default class TodoItem extends React.Component<Props, object> {
   private cancelHandler = () => {
     this.todoViewModel.reset();
     this.isEditing = false;
+  }
+  private deleteHandler = () => {
+    const { props } = this;
+    if (props.requestRemoval) {
+      props.requestRemoval(props.todo);
+    }
   }
   private titleChangedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.todoViewModel.model.title = e.target.value;

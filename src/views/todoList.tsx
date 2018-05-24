@@ -20,7 +20,7 @@ export default class TodoList extends React.Component<Props, object> {
 <div>
   <button onClick={this.newTodoHandler}>New Todo</button>
   <hr />
-  {store.todoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+  {store.todoList.map((todo) => <TodoItem key={todo.id} todo={todo} requestRemoval={this.requestRemovalHandler} />)}
 </div>
     )
   }
@@ -28,6 +28,11 @@ export default class TodoList extends React.Component<Props, object> {
   private newTodoHandler = () => {
     const { store } = this.props;
     const todo = TodoModel.random();
-    store.addTodo(todo);
+    store.add(todo);
+  }
+
+  private requestRemovalHandler = (model: TodoModel) => {
+    const { store } = this.props;
+    store.delete(model);
   }
 }
