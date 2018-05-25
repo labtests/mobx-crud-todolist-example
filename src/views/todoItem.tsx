@@ -12,11 +12,11 @@ interface Props {
 @observer
 export default class TodoItem extends React.Component<Props, object> {
   @observable isEditing: boolean = false;
-  todoViewModel: IViewModel<TodoModel>;
+  @observable todoViewModel: TodoModel & IViewModel<TodoModel>;
 
   render() {
     if (this.isEditing) {
-      const todoModel = this.todoViewModel.model;
+      const todoModel = this.todoViewModel;
       return (
 <div>
   <input type="text" value={todoModel.title} onChange={this.titleChangedHandler} />
@@ -55,6 +55,6 @@ export default class TodoItem extends React.Component<Props, object> {
     }
   }
   private titleChangedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.todoViewModel.model.title = e.target.value;
+    this.todoViewModel.title = e.target.value;
   }
 }
