@@ -12,9 +12,9 @@ class App extends React.Component {
         <header className="App-header">
           <h1 className="App-title">mobx-crud-todolist-example</h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
           <TodoList store={this.todoStore} />
-        </p>
+        </div>
       </div>
     );
   }
